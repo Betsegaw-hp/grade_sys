@@ -64,10 +64,10 @@
     <div class="container">
         <div class="form-container">
             <form id="form">
-        
+                <button id="btn-add" title='add grade' type="button">Add</button>
+                <div class="form-wrapper"></div>
                 <button id="btn-submit" type="submit">result</button>
             </form>
-            <button id="btn-add" title='add grade'>Add</button>
         </div>
         <div class="result-conatiner">
 
@@ -83,6 +83,7 @@
 
     // 
         const form = document.getElementById("form")
+        const formWrapper = document.querySelector('.form-wrapper')
         const result_display =  document.querySelector('.result-conatiner')
         const submit_btn = document.getElementById("btn-submit")
         const add_btn = document.getElementById("btn-add")
@@ -111,7 +112,7 @@
                 <input style="width: 4rem;" class="credit-hour" type="number" placeholder="credit hour" title="enter credit hour" min=0 max=100 required>
                 <button class="btn-remove" type="button">remove</button><br>
             `
-            form.appendChild(ele)
+            formWrapper.appendChild(ele)
 
 
             const remove_btn = ele.querySelector('.btn-remove')
@@ -122,7 +123,7 @@
             const ele = e.currentTarget.parentElement
             const id = ele.dataset.id
 
-            form.removeChild(ele)
+            formWrapper.removeChild(ele)
         }
 
         function grade_analyzer(e) {
