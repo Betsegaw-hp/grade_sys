@@ -2,7 +2,7 @@
     "name": "Simple Grade Analayzer | calculator",
     "short_name": "Grade Analayzer",
     "description": "", 
-    "start_url": "https://betsegaw-hp.github.io/grade_analayzer/",
+    "start_url": "https://betsegaw-hp.github.io/grade_sys/",
   
     "icons":[ {
       "src": "icons/manifest-icon-192.png",
