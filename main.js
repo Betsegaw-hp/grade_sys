@@ -1,19 +1,58 @@
 const form = document.getElementById("form")
 const formWrapper = document.querySelector('.form-wrapper')
-const result_display =  document.querySelector('.result-conatiner')
+const result_display =  document.querySelector('.result-wrapper')
+const result_container =  document.querySelector('.result-conatiner')
 const submit_btn = document.getElementById("btn-submit")
 const add_btn = document.getElementById("btn-add")
 const rowCount = document.querySelector('.row-count')
 
 form.addEventListener("submit", grade_analyzer)
 add_btn.addEventListener("click", addForm)
+window.addEventListener('load', addForm)
 
 function paint(Avg_point) {
+    const colors = ['bg-secondary', 'bg-success', 'bg-warning', 'bg-danger']
+    colors.forEach(color  => result_container.classList.remove(color))
+
+    if(Avg_point >= 3) {
+        result_container.classList.add(colors[1])
+        result_display.classList.add('text-white')
+        paint_celebration()
+    } else if(Avg_point >= 2 ) {
+        result_container.classList.add(colors[2])
+        result_display.classList.add('text-dark')
+    } else {
+        result_container.classList.add(colors[3])
+        result_display.classList.add('text-white')
+    }
+
     result_display.innerHTML = `
         <div class="result-display">
             <p>${ Avg_point }</p>
         </div>    
     `
+}
+
+function paint_celebration() {
+    const ele = document.createElement('div')
+    ele.innerHTML = `
+    <div class="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+    </div>
+    `
+    document.body.appendChild(ele)
 }
 
 function addForm() {
@@ -24,10 +63,12 @@ function addForm() {
     attr.value = id;
     ele.setAttributeNode(attr);
     ele.classList.add('form-list')
+    ele.classList.add('input-group')
+    ele.classList.add('mb-2')
     ele.innerHTML = `
-        <input style="width: 4rem;" class="grade" type="number" placeholder="e.g. 90 " title="enter your grades" min=0 max=100 required>
-        <input style="width: 4rem;" class="credit-hour" type="number" placeholder="credit hour" title="enter credit hour" min=0 max=100 required>
-        <button class="btn-remove" type="button">remove</button><br>
+  <input type="number" aria-label="First name" class="grade form-control" placeholder="e.g. 90 " title="enter your grades with two dp" min=0 max=100 step="0.01" required>
+  <input type="number" aria-label="Last name" class="credit-hour form-control" placeholder="credit hour" title="enter credit hour with two dp" min=0 max=100 step="0.01" required>
+  <button class="btn-remove btn btn-outline-danger rounded-end" type="button">remove</button><br>
     `
     formWrapper.appendChild(ele)
 
@@ -82,7 +123,7 @@ function grade_analyzer(e) {
     }, 0)
     const result = grade_sum / credit_hour_sum
 
-    paint(result)
+    paint(result ? result : 0)
 
 }
 
