@@ -2,7 +2,7 @@
     "name": "Simple Grade Analayzer | calculator",
     "short_name": "Grade Analayzer",
     "description": "", 
-    "start_url": "?home=true",
+    "start_url": "./?home=true",
   
     "icons":[
       {
