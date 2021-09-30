@@ -26,9 +26,10 @@ function paint(Avg_point) {
         result_display.classList.add('text-white')
     }
 
+
     result_display.innerHTML = `
         <div class="result-display">
-            <p class="h1">${ Avg_point.toFixed(2) }</p>
+            <p class="h1">${ Number.isInteger(Avg_point) ? Avg_point.toFixed(2) :Avg_point }</p>
         </div>    
     `
 }
