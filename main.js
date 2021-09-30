@@ -28,7 +28,7 @@ function paint(Avg_point) {
 
     result_display.innerHTML = `
         <div class="result-display">
-            <p class="h1">${ Avg_point.toFixed(5) }</p>
+            <p class="h1">${ Avg_point.toFixed(2) }</p>
         </div>    
     `
 }
