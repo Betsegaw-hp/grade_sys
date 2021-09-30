@@ -28,7 +28,7 @@ function paint(Avg_point) {
 
     result_display.innerHTML = `
         <div class="result-display">
-            <p>${ Avg_point }</p>
+            <p class="h1">${ Avg_point.toFixed(5) }</p>
         </div>    
     `
 }
@@ -81,7 +81,7 @@ function addForm() {
 
 function paint_row_num() {
     const form_number = formWrapper.childElementCount;
-    rowCount.innerHTML = `${form_number} rows`
+    rowCount.innerHTML = `${form_number > 1 ? form_number + ' subjects': form_number+ ' subject' }`
 }
 
 function removeForm(e) {
