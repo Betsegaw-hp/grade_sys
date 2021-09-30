@@ -5,13 +5,37 @@ const result_container =  document.querySelector('.result-conatiner')
 const submit_btn = document.getElementById("btn-submit")
 const add_btn = document.getElementById("btn-add")
 const rowCount = document.querySelector('.row-count')
+const prompt_btn = document.getElementById('install-prompt-btn')
 
 form.addEventListener("submit", grade_analyzer)
 add_btn.addEventListener("click", addForm)
 window.addEventListener('load', addForm)
 
+//  install prompt api
+let deferredPrompt 
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // prevent chrome <67
+    e.preventDefault()
+    deferredPrompt = e
+
+    //  update UI 
+    prompt_btn.style.display = 'block'
+})
+
+prompt_btn.addEventListener('click', () => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(choiceRes => {
+        if( choiceRes.outcome === 'accepted') {
+            console.log('user accepted')
+        }
+        deferredPrompt = null
+    })
+})
+
+
 function paint(Avg_point) {
-    const colors = ['bg-secondary', 'bg-success', 'bg-warning', 'bg-danger']
+    const colors = ['bg-dark', 'bg-success', 'bg-warning', 'bg-danger']
     colors.forEach(color  => result_container.classList.remove(color))
 
     if(Avg_point >= 3) {
@@ -33,6 +57,7 @@ function paint(Avg_point) {
         </div>    
     `
 }
+
 
 function paint_celebration() {
     const ele = document.createElement('div')

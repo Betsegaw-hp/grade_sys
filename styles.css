@@ -10,6 +10,14 @@
     align-content: center;
     justify-content: center;
 }
+.c-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+#install-prompt-btn {
+    display: none;
+}
 .content {
     display: flex;
     flex-direction: row;
@@ -35,6 +43,24 @@
     .content {
         flex-direction: column;
     }
+}
+/* 
+=== scroll bar ===
+*/
+body::-webkit-scrollbar,
+.nav-list::-webkit-scrollbar {
+  width: .5rem;
+}
+
+body::-webkit-scrollbar-track,
+.nav-list::-webkit-scrollbar-track-piece {
+  background: #6c757d;
+}
+
+body::-webkit-scrollbar-thumb,
+.nav-list::-webkit-scrollbar-thumb {
+  background: #212529;
+  border-radius: .3rem; 
 }
 
 /* 

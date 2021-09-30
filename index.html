@@ -57,13 +57,24 @@
 </head>
 <body class="bg-body">
     <section class="section-container">
-        <button id="info-btn" class="btn btn-outline-secondary" style="position:absolute; right: 0;" type="button" role="button" data-bs-container="body" data-bs-toggle="popover" title="About info" data-bs-placement="bottom" data-bs-content=" Developer: Betsegaw-hp Advisor: quanta-nathi" > 
-            <i class="bi bi-info-circle"></i>
-        </button>
+        <nav class="navbar navbar-light bg-dark c-navbar">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <img src="./grade.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                <span class="text-white ms-2">
+                    Grade Analyzer
+                </span>
+            </a>
+              <button id="info-btn" class="btn btn-outline-secondary" style="position:absolute; right: 0;" type="button" role="button" data-bs-container="body" data-bs-toggle="popover" title="Credit" data-bs-placement="bottom" data-bs-content=" Betsegaw Tesfaye (Developer) & Nathanael Talemos (associate)" > 
+                  <i class="bi bi-info-circle text-white"></i>
+              </button>
+                      <!-- Button trigger modal -->
+                <button type="button" id="install-prompt-btn" class="btn btn-primary ms-2 me-2" title="install to use offline">
+                Install <i class="bi bi-plus-circle ms-2"></i>
+                </button>
+            </div>
+          </nav>
         <div class="c-container container">
-            <h3>
-                Grade calculator
-            </h3>
             <div class="content card bg-light shadow-lg rounded">
                 <div class="form-container p-3">
                     <form id="form">
@@ -73,9 +84,9 @@
                         <div class="form-wrapper"></div>
                     </form>
                 </div>
-                <div class="result-conatiner  bg-secondary bg-gradient">
+                <div class="result-conatiner  bg-dark bg-gradient">
                     <div class="icon m-2">
-                        <a><i class="bi bi-share text-white" style="font-size: 1.5rem; cursor: pointer;"></i></a>
+                        <a target="_blank" href=""><i class="bi bi-youtube text-white" style="font-size: 2rem; cursor: pointer;"></i></a>
                     </div>
                     <div class="result-wrapper p-2">
                         <span class="text-white-50"> grade result</span>
@@ -90,9 +101,15 @@
     <script type="text/javascript" src="./main.js"></script>
     <script>
         // service worker
-        if('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./service-worker.js');
-    }     
+        if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+        .then(function(registration) {
+            console.log('Registered:', registration);
+        })
+        .catch(function(error) {
+            console.log('Registration failed: ', error);
+        });
+        }     
     // popover
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     const popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
