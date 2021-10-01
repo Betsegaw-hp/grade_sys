@@ -16,8 +16,12 @@ which is an ideal stack to build simple apps with a native experience.</p>
 <li>installable on your device</li>
 <li>simple to use</li>
 </ul>
+
+
 ## Screenshot
 
 <img src="Screenshot-of-app.png" alt="screenshot"/>
+
+
 ## How to use
 
