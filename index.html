@@ -98,7 +98,7 @@
                 </div>
                 <div class="result-conatiner  bg-dark bg-gradient">
  
-                    <div class="result-wrapper p-2">
+                    <div class="result-wrapper p-4">
                         <span class="text-white-50"> grade result</span>
                     </div>
                 </div>
@@ -119,6 +119,10 @@
         .catch(function(error) {
             console.log('Registration failed: ', error);
         });
+
+        navigator.serviceWorker.addEventListener('ControllerChange', () => {
+            console.log('new service worker installed')
+        })
         }     
     // popover
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
