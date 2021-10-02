@@ -6,7 +6,7 @@ workbox.routing.registerRoute(
 new workbox.strategies.CacheFirst()
 );
 
-const CACHE_NAME = 'static-cache';
+const CACHE_NAME = 'static-cache-v1.1';
 const urlsToCache = [
   '.',
   'index.html',
