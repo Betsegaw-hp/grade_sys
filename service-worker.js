@@ -93,7 +93,7 @@ self.addEventListener('message', (event) => {
 
 
 
-// custom sw
+// custom sw config
 // const CACHE_NAME = 'static-cache-v2.0';
 // const urlsToCache = [
 //   '/',
