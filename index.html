@@ -99,7 +99,7 @@
                 <div class="result-conatiner  bg-dark bg-gradient">
  
                     <div class="result-wrapper p-4">
-                        <span class="text-white-50"> __._ _</span>
+                        <span class="text-white-50"> __.__ __</span>
                     </div>
                 </div>
             </div>
@@ -120,9 +120,9 @@
             console.log('Registration failed: ', error);
         });
 
-        navigator.serviceWorker.addEventListener('ControllerChange', () => {
-            console.log('new service worker installed')
-        })
+        // navigator.serviceWorker.addEventListener('ControllerChange', () => {
+        //     console.log('new service worker installed')
+        // })
         }     
     // popover
     const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
@@ -130,5 +130,58 @@
     return new bootstrap.Popover(popoverTriggerEl)
     })
     </script>
+    <script type="module">
+        // This code sample uses features introduced in Workbox v6.
+        import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.2.0/workbox-window.prod.mjs';
+        
+        if ('serviceWorker' in navigator) {
+          const wb = new Workbox('/service-worker.js');
+          let registration;
+        
+          const showSkipWaitingPrompt = (event) => {
+            // `event.wasWaitingBeforeRegister` will be false if this is
+            // the first time the updated service worker is waiting.
+            // When `event.wasWaitingBeforeRegister` is true, a previously
+            // updated service worker is still waiting.
+            // You may want to customize the UI prompt accordingly.
+        
+            // Assumes your app has some sort of prompt UI element
+            // that a user can either accept or reject.
+            // const prompt = createUIPrompt({
+            //   onAccept: () => {
+            //     // Assuming the user accepted the update, set up a listener
+            //     // that will reload the page as soon as the previously waiting
+            //     // service worker has taken control.
+            //     wb.addEventListener('controlling', (event) => {
+            //       window.location.reload();
+            //     });
+        
+            //     wb.messageSkipWaiting();
+            //   },
+        
+            //   onReject: () => {
+            //     prompt.dismiss();
+            //   }
+            // });
+            const prompt = confirm(`There is a new Update Avaliable.\nclick 'ok' to update `)
+    
+
+            if(prompt) {
+                wb.addEventListener('controlling', (event) => {
+                window.location.reload();
+                });
+  
+            wb.messageSkipWaiting();
+            } else {
+                prompt.dismiss();
+            }
+          };
+          // Add an event listener to detect when the registered
+          // service worker has installed but is waiting to activate.
+          wb.addEventListener('waiting', showSkipWaitingPrompt);
+        
+          wb.register();
+        }
+        </script>
 </body>
 </html>
