@@ -17,7 +17,7 @@ const {setCacheNameDetails} = workbox.core;
 
 setCacheNameDetails({
   prefix: 'grade-analyzer',
-  suffix: 'v1',
+  suffix: 'v1.1.1',
   precache: 'custom-precache-name',
   runtime: 'custom-runtime-name',
   googleAnalytics: 'custom-google-analytics-name'
@@ -93,7 +93,7 @@ self.addEventListener('message', (event) => {
 
 
 
-// custom sw config
+// custom sw config v2
 // const CACHE_NAME = 'static-cache-v2.0';
 // const urlsToCache = [
 //   '/',

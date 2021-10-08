@@ -66,7 +66,7 @@
 </head>
 <body class="bg-body">
     <section class="section-container">
-        <nav class="navbar navbar-light bg-dark c-navbar">
+        <nav class="navbar navbar-light bg-dark c-navbar shadow-lg">
             <div class="container">
               <a class="navbar-brand" href="#">
                 <img src="./grade.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -95,6 +95,9 @@
                         </span>
                         <div class="form-wrapper"></div>
                     </form>
+                    <div class="clear-all-btn-warpper" style="display: flex; justify-content: center;">
+                        <button type="button" id="btn-clear-all" class="btn text-danger px-5">clear all</button>
+                    </div>
                 </div>
                 <div class="result-conatiner  bg-dark bg-gradient">
  
@@ -146,7 +149,6 @@
                 wb.addEventListener('controlling', (event) => {
                 window.location.reload();
                 });
-  
             wb.messageSkipWaiting();
             } else {
                 prompt.dismiss();

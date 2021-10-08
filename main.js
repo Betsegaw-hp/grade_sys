@@ -6,11 +6,16 @@ const submit_btn = document.getElementById("btn-submit")
 const add_btn = document.getElementById("btn-add")
 const rowCount = document.querySelector('.row-count')
 const prompt_btn = document.getElementById('install-prompt-btn')
+const clearAll_btn = document.getElementById('btn-clear-all')
 
 form.addEventListener("submit", grade_analyzer)
 add_btn.addEventListener("click", addForm)
-window.addEventListener('load', addForm)
-
+window.addEventListener('load', () => {
+    addForm() 
+    clearAll_btn_state()
+    // setTheme()
+})
+clearAll_btn.addEventListener("click", clearAllForm)
 //  install prompt api
 let deferredPrompt 
 
@@ -53,7 +58,9 @@ function paint(Avg_point) {
 
     result_display.innerHTML = `
         <div class="result-display">
-            <p class="h1">${ Number.isInteger(Avg_point) ? Avg_point.toFixed(2) :Avg_point }</p>
+            <p class="h1 d-inline-block text-truncate" style="
+            max-width: 150px;" >
+            ${ Number.isInteger(Avg_point) ? Avg_point.toFixed(2) :Avg_point }</p>
         </div>    
     `
 }
@@ -101,7 +108,7 @@ function addForm() {
 
     const remove_btn = ele.querySelector('.btn-remove')
     remove_btn.addEventListener("click", removeForm)
-
+    clearAll_btn_state()
     paint_row_num()
 }
 
@@ -115,7 +122,25 @@ function removeForm(e) {
     const id = ele.dataset.id
 
     formWrapper.removeChild(ele)
+    clearAll_btn_state()
     paint_row_num()
+}
+function clearAllForm() {
+    const form_number = formWrapper.childElementCount;
+
+    if(form_number > 1 ) { 
+        while (formWrapper.firstChild) {
+            formWrapper.removeChild(formWrapper.firstChild);
+        }
+        clearAll_btn_state()
+        return paint_row_num()
+    }
+}
+function clearAll_btn_state() {
+    const form_number = formWrapper.childElementCount;
+    return form_number > 1  ?
+            clearAll_btn.removeAttribute("disabled") :
+            clearAll_btn.setAttribute("disabled", "")
 }
 
 function grade_analyzer(e) {
@@ -207,3 +232,15 @@ function grading_sys(point) {
            
     return grade
 }
+
+//  THEME
+
+// function setTheme() {
+//     const isThemeExist = localStorage.getItem("Theme")
+    
+//     if(isThemeExist) {
+
+//     } else {
+//         localStorage.setItem("Theme", "light")
+//     }
+// }
