@@ -1,6 +1,7 @@
 // implement storage
 // new design
 // add option to include custom grade sys
+// add option to round the result to 2dp
 
 const form = document.getElementById("form")
 const formWrapper = document.querySelector('.form-wrapper')
