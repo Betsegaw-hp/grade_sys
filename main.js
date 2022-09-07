@@ -1,3 +1,7 @@
+// implement storage
+// new design
+// add option to include custom grade sys
+
 const form = document.getElementById("form")
 const formWrapper = document.querySelector('.form-wrapper')
 const result_display =  document.querySelector('.result-wrapper')
