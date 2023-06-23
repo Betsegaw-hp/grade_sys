@@ -42,5 +42,6 @@ which is an ideal stack to build simple apps with a native experience.</p>
 ## Try it today!
 
 [Link to live site](https://grade-sys.netlify.app/?home=true)
+<br/>
 [Link to demo video](https://youtu.be/PsqmaIYtEL8)
 
